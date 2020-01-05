@@ -23,13 +23,16 @@ if __name__ == '__main__':
 
         page.show()
 
+        keys=pygame.key.get_pressed()
+        page.press_key(keys)
         events = pygame.event.get()
-
 
         for event in events:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit(0)
             elif event.type == KEYDOWN:
-                print(event.key)
-                page.press_key(event.key)
+                pass
+
+
+        pygame.display.flip()

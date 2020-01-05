@@ -1,6 +1,10 @@
-from pygame.locals import *
+import pygame
+from utils.params import *
 
-status = 0
+from pygame.locals import *
+from ui.game_part import *
+
+status = 1
 
 
 def get_status():
@@ -16,34 +20,31 @@ class Splash:
     def __init__(self, surface):
         self.surface = surface
 
-    def graph(self):
-        pass
-
     def show(self):
         pass
 
-    def press_key(self,key):
-        print(key)
-
-        try:
-            if key == K_SPACE:
-                set_status(1)
-        except Exception as error:
-            print(error)
-        finally:
-            pass
-
+    def press_key(self, key):
+        pass
 
 
 class Game:
     def __init__(self, surface):
         self.surface = surface
 
-    def graph(self):
-        pass
+        self.game_surface = pygame.Surface((GAME_WIDTH, GAME_HEIGHT))
+        self.info_surface = pygame.Surface((INFO_WIDTH, INFO_HEIGHT))
+        #
+        self.game_area = GameArea(self.game_surface)
+        self.game_info = GameInfo(self.info_surface)
 
     def show(self):
-        pass
+        self.surface.fill((0x77, 0x77, 0x77))
 
-    def press_key(self,key):
-        print(key,'game')
+        self.surface.blit(self.game_surface, (WINDOW_PADDING, WINDOW_PADDING))
+        self.surface.blit(self.info_surface, (2*WINDOW_PADDING+GAME_WIDTH, WINDOW_PADDING))
+
+        self.game_area.graph()
+        self.game_info.graph()
+
+    def press_key(self, key):
+        self.game_area.press(key)
