@@ -20,11 +20,18 @@ WINDOW_HEIGHT = 13 * BLOCK + 2 * WINDOW_PADDING
 
 # 坦克方向
 class Direction(Enum):
-    NONE=-1
+    NONE = -1
     UP = 0
     DOWN = 1
     LEFT = 2
     RIGHT = 3
 
+
 # 主体坦克的速度
-player_rare =5
+player_rare = 15
+
+# 子弹的速度
+bullet_rare = 30
+
+# 碰撞系数
+inflict_param = 15

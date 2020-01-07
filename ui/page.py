@@ -4,27 +4,6 @@ from utils.params import *
 from pygame.locals import *
 from ui.game_part import *
 
-status = 1
-
-
-def get_status():
-    return status
-
-
-def set_status(sta):
-    global status
-    status = sta
-
-
-class Splash:
-    def __init__(self, surface):
-        self.surface = surface
-
-    def show(self):
-        pass
-
-    def press_key(self, key):
-        pass
 
 
 class Game:

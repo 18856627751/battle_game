@@ -10,21 +10,15 @@ if __name__ == '__main__':
     window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
     pygame.display.set_caption('坦克大战')
 
-    splash = Splash(window)
     game = Game(window)
     page = None
 
     while True:
 
-        if get_status() == 0:
-            page = splash
-        elif get_status() == 1:
-            page = game
+        game.show()
 
-        page.show()
-
-        keys=pygame.key.get_pressed()
-        page.press_key(keys)
+        keys = pygame.key.get_pressed()
+        game.press_key(keys)
         events = pygame.event.get()
 
         for event in events:
@@ -33,6 +27,5 @@ if __name__ == '__main__':
                 sys.exit(0)
             elif event.type == KEYDOWN:
                 pass
-
 
         pygame.display.flip()
